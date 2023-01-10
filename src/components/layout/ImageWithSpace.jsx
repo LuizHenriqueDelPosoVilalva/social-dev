@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
 const WIDTH_BREAK= '700px'
-const StyleFlex= styled.div `
+const StyledFlex= styled.div `
   display: flex;
 `
-const StyleImage= styled.div `
+const StyledImage= styled.div `
   background-image: url('${props => props.image}');
   background-position: right;
   background-repeat: no-repeat;
@@ -18,7 +18,7 @@ const StyleImage= styled.div `
   }
 `
 
-const StyleContainer= styled.div `
+const StyledContainer= styled.div `
   background-color: ${props=> props.theme.white};
   padding: 30px 50px;
 
@@ -32,18 +32,25 @@ const StyleContainer= styled.div `
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+
+  &:before, &:after {
+    content: '';
+    margin: auto;
+  }
 `
 
 function ImageWithSpace ({children, image}) {
   return (
     <div>
-      <StyleFlex>
-        <StyleImage image= {image} />
-        <StyleContainer>
+      <StyledFlex>
+        <StyledImage image= {image} />
+        <StyledContainer>
           {children}
-        </StyleContainer>
-      </StyleFlex>
+        </StyledContainer>
+      </StyledFlex>
     </div>
   )
 }
