@@ -22,6 +22,7 @@ signup.post(validate({ body:postSchema }), async(req,res) => {
     res.status(201).json(user)
 } catch (err) {
     console.error(err)
+    throw err
   }
 })
 
