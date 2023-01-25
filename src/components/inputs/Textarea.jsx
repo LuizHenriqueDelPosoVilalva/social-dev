@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Textarea= styled.textarea `
+const TextArea= styled.textarea `
   resize: none;
   width: 100%;
   padding: 15px 20px;
@@ -12,4 +12,4 @@ const Textarea= styled.textarea `
   font-size: 14px;
 `
 
-export default Textarea
+export default TextArea

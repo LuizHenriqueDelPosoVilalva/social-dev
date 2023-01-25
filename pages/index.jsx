@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { withIronSessionSsr } from 'iron-session/next'
 import axios from 'axios'
@@ -23,9 +22,6 @@ const RefreshPosts= styled.span `
   cursor: pointer;
   color: ${props=> props.theme.primary};
 `
-const RefreshPostsContainer= styled.div `
-  text-align: center;
-`
 
 const PostContainer= styled.div `
   display: flex;
@@ -37,7 +33,7 @@ const PostContainer= styled.div `
 const fetcher= url => axios.get(url).then(res => res.data)
 
 function HomePage ({user}) {
-  const { data}= useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/post`,fetcher) 
+  const { data }= useSWR(`${process.env.NEXT_PUBLIC_API_URL}/api/post`,fetcher) 
   
   return (
     <>
@@ -46,9 +42,6 @@ function HomePage ({user}) {
         <Container>
           <CreatePost username= {user.user}/>
           <LastPostText>Últimas postagens:</LastPostText>
-          <RefreshPostsContainer>
-            <RefreshPosts>Carregar novas postagens.</RefreshPosts>
-          </RefreshPostsContainer>
           <PostContainer>
             {
               data?.map(post =>
